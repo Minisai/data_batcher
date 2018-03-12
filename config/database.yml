@@ -1,0 +1,19 @@
+defaults: &defaults
+  username: postgres
+  adapter: postgresql
+  encoding: utf8
+  host: localhost
+  port: 5432
+  pool: 5
+
+development: &development
+  database: data_batcher_development
+  <<: *defaults
+
+test:
+  database: data_batcher_test
+  <<: *defaults
+
+production:
+  database: data_batcher_production
+  <<: *defaults
