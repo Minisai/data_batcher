@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe EventsController, type: :controller do
-
   let(:valid_attributes) do
     {
       event: 'event123'
@@ -17,9 +16,9 @@ RSpec.describe EventsController, type: :controller do
   describe 'POST #create' do
     context 'with valid params' do
       it 'creates a new Event' do
-        expect {
+        expect do
           post :create, params: valid_attributes
-        }.to change(EventRecord, :count).by(1)
+        end.to change(EventRecord, :count).by(1)
       end
 
       it 'renders a JSON response with the new event' do

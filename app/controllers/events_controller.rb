@@ -1,8 +1,8 @@
 class EventsController < ApplicationController
   def create
-    event = EventRecord.new(value: params[:event])
+    event_record = EventRecordCreator.new(value: params[:event]).create
 
-    if event.save
+    if event_record.valid?
       head :created
     else
       head :unprocessable_entity

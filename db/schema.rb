@@ -10,13 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180314191314) do
+ActiveRecord::Schema.define(version: 20180315112645) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "event_records", force: :cascade do |t|
     t.string "value"
+    t.integer "events_batch_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["events_batch_id"], name: "index_event_records_on_events_batch_id"
+  end
+
+  create_table "events_batches", force: :cascade do |t|
     t.boolean "delivered", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
