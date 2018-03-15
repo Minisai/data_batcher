@@ -6,6 +6,7 @@ gem 'puma', '~> 3.7'
 gem 'rails', '~> 5.1.5'
 
 group :development, :test do
+  gem 'dotenv-rails'
   gem 'byebug', platforms: %i(mri mingw x64_mingw)
   gem 'factory_bot_rails'
   gem 'rspec-rails', '~> 3.7'

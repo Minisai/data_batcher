@@ -6,12 +6,11 @@ class EventsBatchCreator
 
   private
 
-  # TODO: use timeout from .env
   def schedule_backoff_sending_job
-    EventsBatchSendingJob.set(wait: 60.seconds).perform_later(events_batch.id)
+    EventsBatchSendingJob.set(wait: ENV['BACKOFF_DURATION']).perform_later(events_batch.id)
   end
 
   def events_batch
-    @events_batch ||= EventRecord.new(attributes)
+    @events_batch ||= EventsBatch.new
   end
 end

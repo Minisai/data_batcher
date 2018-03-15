@@ -19,9 +19,8 @@ class EventsBatchSender
     Net::HTTP.new(uri.host, uri.port).request(request)
   end
 
-  # TODO: Set uri from env variables
   def uri
-    @uri ||= URI.parse('http://localhost:3000/users')
+    @uri ||= URI.parse(ENV['CONSUMER_URL'])
   end
 
   def request
