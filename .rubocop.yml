@@ -1,0 +1,46 @@
+AllCops:
+  TargetRubyVersion: 2.5
+  Exclude:
+    - db/schema.rb
+    - vendor/**/*
+
+Rails:
+  Enabled: true
+
+Rails/HttpPositionalArguments:
+  Enabled: false
+
+Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 120
+
+AssignmentInCondition:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - config/**/*
+    - spec/**/*
+    - db/schema.rb
+
+Style/GuardClause:
+  Enabled: false
+
+PercentLiteralDelimiters:
+  PreferredDelimiters:
+    '%i': ()
+    '%w': ()
+
+Lint/AmbiguousBlockAssociation:
+  Enabled: false
+
+Style/FormatString:
+  Enabled: false

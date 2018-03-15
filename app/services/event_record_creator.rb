@@ -6,23 +6,17 @@ class EventRecordCreator
   end
 
   def create
-    enqueue_batch_sending_job if event.save
-    event
+    push_to_events_batch if event_record.save
+    event_record
   end
 
   private
 
-  def event
-    @event ||= EventRecord.new(attributes)
+  def push_to_events_batch
+    AvailableBatchPusher.new.push_event(event_record)
   end
 
-  def enqueue_batch_sending_job
-    if delivered_count == 10
-      EventsBatchSendingJob.perform_later(DateTime.current)
-    end
-  end
-
-  def delivered_count
-    @delivered_count ||= EventRecord.delivered.count
+  def event_record
+    @event_record ||= EventRecord.new(attributes)
   end
 end

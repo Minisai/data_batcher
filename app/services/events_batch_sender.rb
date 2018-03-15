@@ -2,10 +2,11 @@ require 'net/http'
 require 'uri'
 
 class EventsBatchSender
-  attr_reader :event_records
+  attr_reader :events_batch
+  delegate :event_records, to: :events_batch
 
-  def initialize(event_records)
-    @event_records = event_records
+  def initialize(events_batch)
+    @events_batch = events_batch
   end
 
   def send_batch
@@ -18,9 +19,9 @@ class EventsBatchSender
     Net::HTTP.new(uri.host, uri.port).request(request)
   end
 
-  #TODO Set uri from env variables
+  # TODO: Set uri from env variables
   def uri
-    @uri ||= URI.parse("http://localhost:3000/users")
+    @uri ||= URI.parse('http://localhost:3000/users')
   end
 
   def request
@@ -28,8 +29,7 @@ class EventsBatchSender
     request.body = params
   end
 
-  #TODO Set limit from env variables
   def params
-    events.pluck(:value)
+    event_records.pluck(:value)
   end
 end

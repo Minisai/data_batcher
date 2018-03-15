@@ -1,6 +1,7 @@
 class EventRecord < ApplicationRecord
   validates :value, presence: true, uniqueness: true
 
-  scope :not_delivered, -> { where(delivered: false) }
-  scope :created_before, ->(created_before) { where('created_at <= ?', created_before) }
+  belongs_to :events_batch, counter_cache: true
+
+  scope :without_batch, -> { where(events_batch_id: nil) }
 end
