@@ -1,14 +1,15 @@
 source 'https://rubygems.org'
 
 gem 'pg'
-gem 'sidekiq'
 gem 'puma', '~> 3.7'
 gem 'rails', '~> 5.1.5'
+gem 'rest-client'
+gem 'sidekiq'
 
 group :development, :test do
   gem 'dotenv-rails'
-  gem 'byebug', platforms: %i(mri mingw x64_mingw)
   gem 'factory_bot_rails'
+  gem 'pry'
   gem 'rspec-rails', '~> 3.7'
 end
 

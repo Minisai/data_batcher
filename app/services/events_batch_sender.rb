@@ -1,6 +1,3 @@
-require 'net/http'
-require 'uri'
-
 class EventsBatchSender
   attr_reader :events_batch
   delegate :event_records, to: :events_batch
@@ -16,16 +13,11 @@ class EventsBatchSender
   private
 
   def send_request
-    Net::HTTP.new(uri.host, uri.port).request(request)
+    RestClient.post(url, params)
   end
 
-  def uri
-    @uri ||= URI.parse(ENV['CONSUMER_URL'])
-  end
-
-  def request
-    request = Net::HTTP::Post.new(uri.request_uri)
-    request.body = params
+  def url
+    ENV['CONSUMER_URL']
   end
 
   def params

@@ -20,10 +20,10 @@ module DataBatcher
   class Application < Rails::Application
     config.load_defaults 5.1
 
-    logger           = ActiveSupport::Logger.new(STDOUT)
-    logger.formatter = config.log_formatter
-    config.log_tags  = %i(subdomain uuid)
-    config.logger    = ActiveSupport::TaggedLogging.new(logger)
+    # logger           = ActiveSupport::Logger.new(STDOUT)
+    # logger.formatter = config.log_formatter
+    # config.log_tags  = %i(subdomain uuid)
+    # config.logger    = ActiveSupport::TaggedLogging.new(logger)
 
     config.active_job.queue_adapter = :sidekiq
     # Settings in config/environments/* take precedence over those specified here.

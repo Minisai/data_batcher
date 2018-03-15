@@ -1,6 +1,6 @@
 class AvailableBatchPusher
-  def push_event(event)
-    available_batch.events << event
+  def push_event(event_record)
+    available_batch.event_records << event_record
     enqueue_sending_job if available_batch.full?
   end
 

@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(version: 20180315112645) do
 
   create_table "events_batches", force: :cascade do |t|
     t.boolean "delivered", default: false
-    t.integer "event_records_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

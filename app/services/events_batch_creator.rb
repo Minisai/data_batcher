@@ -7,7 +7,7 @@ class EventsBatchCreator
   private
 
   def schedule_backoff_sending_job
-    EventsBatchSendingJob.set(wait: ENV['BACKOFF_DURATION']).perform_later(events_batch.id)
+    EventsBatchSendingJob.set(wait: ENV['BACKOFF_DURATION'].to_i.seconds).perform_later(events_batch.id)
   end
 
   def events_batch
