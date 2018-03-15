@@ -1,19 +1,11 @@
-defaults: &defaults
-  username: postgres
-  adapter: postgresql
-  encoding: utf8
-  host: localhost
-  port: 5432
-  pool: 5
-
-development: &development
-  database: data_batcher_development
-  <<: *defaults
+development:
+  url: <%= ENV['DATABASE_URL'].gsub('?', '_development?') %>
 
 test:
-  database: data_batcher_test
-  <<: *defaults
+  url: <%= ENV['DATABASE_URL'].gsub('?', '_test?') %>
+
+staging:
+  url: <%= ENV['DATABASE_URL'].gsub('?', '_staging?') %>
 
 production:
-  database: data_batcher_production
-  <<: *defaults
+  url: <%= ENV['DATABASE_URL'].gsub('?', '_production?') %>

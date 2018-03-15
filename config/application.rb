@@ -25,6 +25,7 @@ module DataBatcher
     # config.logger    = ActiveSupport::TaggedLogging.new(logger)
 
     config.active_job.queue_adapter = :sidekiq
+    config.active_job.queue_name_prefix = "#{ENV['ACTIVE_JOB_QUEUE_PREFIX']}_#{Rails.env}"
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
