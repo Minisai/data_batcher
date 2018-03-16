@@ -6,7 +6,7 @@ class EventRecordCreator
   end
 
   def create
-    push_to_events_batch if event_record.save
+    push_to_events_batch if event_record.valid?
     event_record
   end
 

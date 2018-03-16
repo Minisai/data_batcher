@@ -12,7 +12,7 @@ RSpec.describe EventsBatchSender do
 
   context 'send_batch' do
     it 'sends expected data via RestClient' do
-      expect(RestClient).to receive(:post).with(ENV['CONSUMER_URL'], %w(event1 event2 event3))
+      expect(RestClient).to receive(:post).with(ENV['CONSUMER_URL'], events: %w(event1 event2 event3))
       service.send_batch
     end
   end

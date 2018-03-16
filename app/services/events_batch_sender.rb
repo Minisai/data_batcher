@@ -21,6 +21,8 @@ class EventsBatchSender
   end
 
   def params
-    event_records.pluck(:value)
+    {
+      events: event_records.pluck(:value)
+    }
   end
 end

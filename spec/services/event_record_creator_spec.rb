@@ -6,11 +6,9 @@ RSpec.describe EventRecordCreator do
   context 'successful record creation' do
     let(:attributes) { { value: 'event1' } }
 
-    it 'creates a new EventsBatch record' do
+    it 'returns valid EventRecord' do
       expect(AvailableBatchPusher).to receive_message_chain(:new, :push_event)
-      expect do
-        service.create
-      end.to change(EventRecord, :count).by(1)
+      expect(service.create).to be_valid
     end
   end
 

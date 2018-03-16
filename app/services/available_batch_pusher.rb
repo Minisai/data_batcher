@@ -8,7 +8,7 @@ class AvailableBatchPusher
 
   def available_batch
     @available_batch ||= begin
-      EventsBatch.not_delivered.last || created_batch_record
+      EventsBatch.not_delivered.not_full.last || created_batch_record
     end
   end
 
