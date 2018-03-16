@@ -2,7 +2,7 @@
 
 * Start everything
 
-docker-compose up --build
+docker-compose up --build --scale app=5
 
 * Reset the database
 
