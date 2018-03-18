@@ -23,9 +23,9 @@ docker-compose exec --user "$(id -u):$(id -g)" app rails db:migrate
 .env file contains the default values. Feel free to configure them:
 
 ```
-EVENTS_BATCH_LIMIT=10 # the length of events batch
-BACKOFF_DURATION=60 # backoff duration in seconds, time the system waits before forced events sending
-CONSUMER_URL=mirror # external service url. Using mirror-http server for default
+EVENTS_BATCH_LIMIT=10 # length of events batch
+BACKOFF_DURATION=60   # backoff duration in seconds, time the system waits before forced events sending
+CONSUMER_URL=mirror   # external service url. Using mirror-http server for default
 ```
 
 
