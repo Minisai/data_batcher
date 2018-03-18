@@ -37,7 +37,7 @@ CONSUMER_URL=mirror   # external service url. Using mirror-http server for defau
 curl -X POST http://127.0.0.1:300[0-4]/events\?event\=evt1
 ```
 
-* Wait for 60 seconds
+* Wait for 60 seconds or send 9 more events
 
 * See the mirror service output in the console:
 
