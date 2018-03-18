@@ -18,7 +18,7 @@ RSpec.describe EventsController, type: :controller do
       it 'creates a new Event' do
         expect do
           post :create, params: valid_attributes
-        end.to change(EventRecord, :count).by(1)
+        end.to change(EventRecord, :count).from(0).to(1)
       end
 
       it 'renders a JSON response with the new event' do

@@ -8,7 +8,7 @@ RSpec.describe EventsBatchSendingJob, type: :job do
 
   it 'queues the job' do
     expect { job }
-      .to change(ActiveJob::Base.queue_adapter.enqueued_jobs, :size).by(1)
+      .to change(ActiveJob::Base.queue_adapter.enqueued_jobs, :size).from(0).to(1)
   end
 
   context 'events_batch not delivered' do

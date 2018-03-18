@@ -12,13 +12,13 @@ RSpec.describe EventsBatchCreator do
     it 'creates a new EventsBatch record' do
       expect do
         service.create
-      end.to change(EventsBatch, :count).by(1)
+      end.to change(EventsBatch, :count).from(0).to(1)
     end
 
     it 'schedules EventsBatchSendingJob' do
       expect do
         service.create
-      end.to have_enqueued_job(EventsBatchSendingJob).with(events_batch.id).on_queue('default')
+      end.to have_enqueued_job(EventsBatchSendingJob).with(events_batch.id)
     end
   end
 
